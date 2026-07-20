@@ -253,7 +253,7 @@ function enterStep(index){
   const step = state.steps[index];
   state.stepIndex = index;
   if(step.type==='pause'){ state.timerPhase='main'; state.remaining=step.durationSec; state.timerId=setInterval(tick,1000); }
-  else if(step.type==='exercise' && step.durationSec){ state.timerPhase='prep'; state.remaining=5; state.timerId=setInterval(tick,1000); }
+  else if(step.type==='exercise' && step.durationSec){ state.timerPhase='prep'; state.remaining=10; state.timerId=setInterval(tick,1000); }
   else { state.timerPhase='idle'; state.remaining=0; }
   render();
 }
