@@ -91,6 +91,9 @@ const WORKOUTS_DATA = {
       {name:'Nackenkreisen (langsam)', reps:'10'},
       {name:'Scapular Push-Up', reps:'10'},
       {name:'Band Pull-Apart (schwaches Band)', reps:'10'},
+      {name:'Externe Rotation', cue:'leichtes Band · Prävention', reps:'15 je Seite'},
+      {name:'Face Pull', cue:'Band auf Gesichtshöhe · Prävention', reps:'15'},
+      {name:'Wall Slides (Wandengel)', cue:'Schulterblattkontrolle', reps:'10'},
       {name:'Negative Klimmzüge', cue:'langsam runter, 3-4 Sek', reps:'5'},
       {name:'Arm Swings', reps:'10'},
     ],
@@ -121,6 +124,8 @@ const WORKOUTS_DATA = {
       {name:'Bodyweight Squat', cue:'langsam, tief', reps:'10'},
       {name:'Leg Swings', cue:'vorwärts/rückwärts', reps:'10 je Seite'},
       {name:'Cossack Squat', cue:'sehr langsam', reps:'5 je Seite'},
+      {name:'Externe Rotation', cue:'leichtes Band · Prävention', reps:'15 je Seite'},
+      {name:'Face Pull', cue:'Band auf Gesichtshöhe · Prävention', reps:'15'},
     ],
     main: [
       {name:'Bulgarian Split Squat', cue:'3kg, langsames Tempo', sets:4, reps:'8-10 Wdh je Seite', pauseSec:120},
@@ -138,6 +143,27 @@ const WORKOUTS_DATA = {
       {name:'Seated Forward Fold', durationSec:60},
       {name:'Faszienrolle Wade', cue:'für Achillessehne', sides:true, durationSec:60},
     ],
+  },
+  P1: { title: 'Phase 1 – Schonung', subtitle: 'Reha · Schulter', mainLabel: 'Mobilisation',
+    warmup: [],
+    main: [
+      {name:'Pendelübung', cue:'sanfte Mobilisation ohne Last · 2x/Tag', sides:true, durationSec:30},
+      {name:'Schulterblatt-Retraktion', cue:'ohne Band, langsam', sets:3, reps:'10 Wdh', pauseSec:30},
+      {name:'Brustdehnung im Türrahmen', cue:'sanft', sets:2, durationSec:30, pauseSec:20},
+    ],
+    cooldown: [],
+  },
+  P2: { title: 'Phase 2 – Korrektur', subtitle: 'Reha · ~12 Min · 3x/Woche', mainLabel: 'Korrektur Dysbalance',
+    warmup: [],
+    main: [
+      {name:'Externe Rotation', cue:'leichtes Band · Außenrotatoren', sets:3, reps:'15 Wdh je Seite', pauseSec:45},
+      {name:'Interne Rotation', cue:'leichtes Band · Balance', sets:3, reps:'15 Wdh je Seite', pauseSec:45},
+      {name:'Band Pull-Apart', cue:'leicht · hintere Schulter', sets:3, reps:'15 Wdh', pauseSec:45},
+      {name:'Face Pull', cue:'Band auf Gesichtshöhe ziehen', sets:3, reps:'15 Wdh', pauseSec:45},
+      {name:'Wall Slides (Wandengel)', cue:'Schulterblattkontrolle, Mobilität', sets:3, reps:'10 Wdh', pauseSec:45},
+      {name:'Brustdehnung Türrahmen', sets:2, durationSec:30, pauseSec:20},
+    ],
+    cooldown: [],
   },
 };
 
@@ -169,6 +195,11 @@ function buildSteps(wk) {
 }
 
 const PHASE_LABELS = { warmup: 'Warm-up', main: 'Hauptteil', cooldown: 'Cool-down' };
+function phaseLabelFor(step){
+  const w = WORKOUTS_DATA[state.workoutKey];
+  if(step.phase === 'main' && w && w.mainLabel) return w.mainLabel;
+  return PHASE_LABELS[step.phase];
+}
 let state = { screen: 'home', workoutKey: null, steps: [], stepIndex: 0, timerPhase: 'idle', remaining: 0, timerId: null, actx: null, wakeLock: null };
 
 async function requestWakeLock(){
@@ -295,7 +326,7 @@ function render(){
   if(state.screen==='session'){
     const step = state.steps[state.stepIndex];
     $('progress-bar').style.width = Math.round((state.stepIndex/state.steps.length)*100) + '%';
-    $('phase-label').textContent = step ? PHASE_LABELS[step.phase] : '';
+    $('phase-label').textContent = step ? phaseLabelFor(step) : '';
     const isPause = step && step.type==='pause';
     const isTimed = step && step.type==='exercise' && !!step.durationSec;
     const isReps = step && step.type==='exercise' && !step.durationSec;
@@ -333,7 +364,7 @@ function render(){
 
 document.addEventListener('DOMContentLoaded', () => {
   const list = $('workout-list');
-  ['A','B'].forEach(key => {
+  Object.keys(WORKOUTS_DATA).forEach(key => {
     const d = document.createElement('div');
     d.className = 'card';
     d.innerHTML = `<div class="tag accent">${WORKOUTS_DATA[key].subtitle}</div><div style="font-size:26px;font-weight:700;">${WORKOUTS_DATA[key].title}</div>`;
