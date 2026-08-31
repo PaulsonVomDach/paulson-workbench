@@ -91,7 +91,7 @@ const WORKOUTS_DATA = {
       {name:'Nackenkreisen (langsam)', reps:'10'},
       {name:'Scapular Push-Up', reps:'10'},
       {name:'Band Pull-Apart (schwaches Band)', reps:'10'},
-      {name:'Externe Rotation', cue:'leichtes Band · Prävention', reps:'15 je Seite'},
+      {name:'Externe Rotation', cue:'leichtes Band · Prävention', sides:true, reps:'15 Wdh'},
       {name:'Face Pull', cue:'Band auf Gesichtshöhe · Prävention', reps:'15'},
       {name:'Wall Slides (Wandengel)', cue:'Schulterblattkontrolle', reps:'10'},
       {name:'Negative Klimmzüge', cue:'langsam runter, 3-4 Sek', reps:'5'},
@@ -124,7 +124,7 @@ const WORKOUTS_DATA = {
       {name:'Bodyweight Squat', cue:'langsam, tief', reps:'10'},
       {name:'Leg Swings', cue:'vorwärts/rückwärts', reps:'10 je Seite'},
       {name:'Cossack Squat', cue:'sehr langsam', reps:'5 je Seite'},
-      {name:'Externe Rotation', cue:'leichtes Band · Prävention', reps:'15 je Seite'},
+      {name:'Externe Rotation', cue:'leichtes Band · Prävention', sides:true, reps:'15 Wdh'},
       {name:'Face Pull', cue:'Band auf Gesichtshöhe · Prävention', reps:'15'},
     ],
     main: [
@@ -147,23 +147,104 @@ const WORKOUTS_DATA = {
   P1: { title: 'Phase 1 – Schonung', subtitle: 'Reha · Schulter', mainLabel: 'Mobilisation',
     warmup: [],
     main: [
-      {name:'Pendelübung', cue:'sanfte Mobilisation ohne Last · 2x/Tag', sides:true, durationSec:30},
+      {name:'Pendelübung', cue:'sanfte Mobilisation ohne Last · 2x/Tag', sets:2, sides:true, durationSec:30, pauseSec:20},
       {name:'Schulterblatt-Retraktion', cue:'ohne Band, langsam', sets:3, reps:'10 Wdh', pauseSec:30},
-      {name:'Brustdehnung im Türrahmen', cue:'sanft', sets:2, durationSec:30, pauseSec:20},
+      {name:'Brustdehnung im Türrahmen', cue:'sanft', sets:2, sides:true, durationSec:30, pauseSec:20},
     ],
     cooldown: [],
   },
   P2: { title: 'Phase 2 – Korrektur', subtitle: 'Reha · ~12 Min · 3x/Woche', mainLabel: 'Korrektur Dysbalance',
     warmup: [],
     main: [
-      {name:'Externe Rotation', cue:'leichtes Band · Außenrotatoren', sets:3, reps:'15 Wdh je Seite', pauseSec:45},
-      {name:'Interne Rotation', cue:'leichtes Band · Balance', sets:3, reps:'15 Wdh je Seite', pauseSec:45},
+      {name:'Externe Rotation', cue:'leichtes Band · Außenrotatoren', sets:3, sides:true, reps:'15 Wdh', pauseSec:45},
+      {name:'Interne Rotation', cue:'leichtes Band · Balance', sets:3, sides:true, reps:'15 Wdh', pauseSec:45},
       {name:'Band Pull-Apart', cue:'leicht · hintere Schulter', sets:3, reps:'15 Wdh', pauseSec:45},
       {name:'Face Pull', cue:'Band auf Gesichtshöhe ziehen', sets:3, reps:'15 Wdh', pauseSec:45},
       {name:'Wall Slides (Wandengel)', cue:'Schulterblattkontrolle, Mobilität', sets:3, reps:'10 Wdh', pauseSec:45},
-      {name:'Brustdehnung Türrahmen', sets:2, durationSec:30, pauseSec:20},
+      {name:'Brustdehnung Türrahmen', sets:2, sides:true, durationSec:30, pauseSec:20},
     ],
     cooldown: [],
+  },
+  W1: { title: 'Woche 1 – Sanfter Start', subtitle: 'Wiedereinstieg Push/Pull', mainLabel: 'Reduziertes Push/Pull',
+    warmup: [
+      {name:'Hampelmann / Laufen auf der Stelle', durationSec:120},
+      {name:'Armkreisen vorwärts + rückwärts', reps:'10 je Richtung'},
+      {name:'Nackenkreisen (langsam)', reps:'10'},
+      {name:'Scapular Push-Up', reps:'10'},
+      {name:'Externe Rotation', cue:'leichtes Band · Prävention', sides:true, reps:'15 Wdh'},
+      {name:'Face Pull', cue:'Band auf Gesichtshöhe · Prävention', reps:'15'},
+      {name:'Wall Slides (Wandengel)', cue:'Schulterblattkontrolle', reps:'10'},
+      {name:'Arm Swings', reps:'10'},
+    ],
+    main: [
+      {name:'Liegestützgriffe Push-Up', cue:'flach, Füße am Boden', sets:3, reps:'10-12 Wdh', pauseSec:90},
+      {name:'Trizeps Dips', cue:'Stuhl, kleiner ROM', sets:3, reps:'10-12 Wdh', pauseSec:90},
+      {name:'Band Curl', sets:3, reps:'12-15 Wdh', pauseSec:60},
+      {name:'Band Pull-Apart', cue:'aus der Reha', sets:3, reps:'15 Wdh', pauseSec:45},
+      {name:'Face Pull', cue:'aus der Reha', sets:3, reps:'15 Wdh', pauseSec:45},
+    ],
+    cooldown: [
+      {name:'Doorway Chest Stretch', sets:2, sides:true, durationSec:30},
+      {name:'Schulter Cross-Body Stretch', sides:true, durationSec:30},
+      {name:"Child's Pose", durationSec:60},
+    ],
+  },
+  W2: { title: 'Woche 2 – Enge Klimmzüge dazu', subtitle: 'Wiedereinstieg Push/Pull', mainLabel: 'Push/Pull + Klimmzüge',
+    warmup: [
+      {name:'Hampelmann / Laufen auf der Stelle', durationSec:120},
+      {name:'Armkreisen vorwärts + rückwärts', reps:'10 je Richtung'},
+      {name:'Nackenkreisen (langsam)', reps:'10'},
+      {name:'Scapular Push-Up', reps:'10'},
+      {name:'Externe Rotation', cue:'leichtes Band · Prävention', sides:true, reps:'15 Wdh'},
+      {name:'Face Pull', cue:'Band auf Gesichtshöhe · Prävention', reps:'15'},
+      {name:'Wall Slides (Wandengel)', cue:'Schulterblattkontrolle', reps:'10'},
+      {name:'Arm Swings', reps:'10'},
+    ],
+    main: [
+      {name:'Enge Klimmzüge', cue:'ersten Satz bewusst langsam · bei Ziehen sofort raus', sets:4, reps:'max Wdh', pauseSec:120},
+      {name:'Liegestützgriffe Push-Up', cue:'flach, Füße am Boden', sets:3, reps:'10-12 Wdh', pauseSec:90},
+      {name:'Decline Push-Up', cue:'optional · flach, Füße am Boden', sets:3, reps:'8-12 Wdh', pauseSec:90},
+      {name:'Trizeps Dips', cue:'Stuhl, kleiner ROM', sets:3, reps:'10-12 Wdh', pauseSec:90},
+      {name:'Band Curl', sets:3, reps:'12-15 Wdh', pauseSec:60},
+      {name:'Band Pull-Apart', cue:'aus der Reha', sets:3, reps:'15 Wdh', pauseSec:45},
+      {name:'Face Pull', cue:'aus der Reha', sets:3, reps:'15 Wdh', pauseSec:45},
+    ],
+    cooldown: [
+      {name:'Doorway Chest Stretch', sets:2, sides:true, durationSec:30},
+      {name:'Lat Stretch am Türrahmen', sets:2, sides:true, durationSec:30},
+      {name:'Schulter Cross-Body Stretch', sides:true, durationSec:30},
+      {name:"Child's Pose", durationSec:60},
+    ],
+  },
+  W3: { title: 'Woche 3 – Komplett', subtitle: 'Wiedereinstieg Push/Pull', mainLabel: 'Volles Push/Pull',
+    warmup: [
+      {name:'Hampelmann / Laufen auf der Stelle', durationSec:120},
+      {name:'Armkreisen vorwärts + rückwärts', reps:'10 je Richtung'},
+      {name:'Nackenkreisen (langsam)', reps:'10'},
+      {name:'Scapular Push-Up', reps:'10'},
+      {name:'Externe Rotation', cue:'leichtes Band · Prävention', sides:true, reps:'15 Wdh'},
+      {name:'Face Pull', cue:'Band auf Gesichtshöhe · Prävention', reps:'15'},
+      {name:'Wall Slides (Wandengel)', cue:'Schulterblattkontrolle', reps:'10'},
+      {name:'Negative Klimmzüge', cue:'langsam runter, 3-4 Sek', reps:'5'},
+      {name:'Arm Swings', reps:'10'},
+    ],
+    main: [
+      {name:'Breite Klimmzüge', cue:'langsam · maximale Aufmerksamkeit', sets:2, reps:'max Wdh', pauseSec:120},
+      {name:'Enge Klimmzüge', sets:3, reps:'max Wdh', pauseSec:120},
+      {name:'Decline Push-Up', cue:'Archer 6/Seite oder 3-1-1 Tempo', sets:3, reps:'6-8 Wdh', pauseSec:120},
+      {name:'Pike Push-Up', cue:'leicht beginnen · Füße nicht zu hoch', sets:3, reps:'8-10 Wdh', pauseSec:90},
+      {name:'Liegestützgriffe Push-Up', cue:'Füße erhöht', sets:3, reps:'8-12 Wdh', pauseSec:90},
+      {name:'Trizeps Dips', cue:'Rucksack oder 3-1-1 Tempo', sets:3, reps:'10-12 Wdh', pauseSec:90},
+      {name:'Band Curl (Bizeps)', sets:3, reps:'12-15 Wdh', pauseSec:60},
+      {name:'Band Pull-Apart', cue:'stärkeres Band', sets:3, reps:'10-15 Wdh', pauseSec:60},
+    ],
+    cooldown: [
+      {name:'Doorway Chest Stretch', sets:2, sides:true, durationSec:30},
+      {name:'Lat Stretch am Türrahmen', sets:2, sides:true, durationSec:30},
+      {name:"Child's Pose", durationSec:60},
+      {name:'Schulter Cross-Body Stretch', sides:true, durationSec:30},
+      {name:'Thoracic Rotation auf Matte', reps:'10x je Seite'},
+    ],
   },
 };
 
@@ -176,12 +257,12 @@ function buildSteps(wk) {
     for (let s = 1; s <= sets; s++) {
       for (let side = 1; side <= sides; side++) {
         let sub = '';
-        if (sets > 1 && sides > 1) sub = `Seite ${side} · Satz ${s}/${sets}`;
+        if (sets > 1 && sides > 1) sub = `Satz ${s}/${sets} · ${side === 1 ? 'Linke' : 'Rechte'} Seite`;
         else if (sets > 1) sub = `Satz ${s}/${sets}`;
-        else if (sides > 1) sub = `Seite ${side} von 2`;
+        else if (sides > 1) sub = `${side === 1 ? 'Linke' : 'Rechte'} Seite`;
         steps.push({type:'exercise', phase, name: ex.name, cue: ex.cue || '', reps: ex.reps || '', sub, durationSec: ex.durationSec || 0});
         const isLastOfBlock = s === sets && side === sides;
-        if (addPauseAfterSet && ex.pauseSec && !isLastOfBlock) steps.push({type:'pause', phase, durationSec: ex.pauseSec});
+        if (addPauseAfterSet && ex.pauseSec && !isLastOfBlock && side === sides) steps.push({type:'pause', phase, durationSec: ex.pauseSec});
       }
     }
   };
