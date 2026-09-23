@@ -38,6 +38,7 @@
   <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:18px;">
     <div id="intro-subtitle" class="tag accent"></div>
     <div id="intro-title" style="font-size:38px;font-weight:700;"></div>
+    <div id="intro-note" style="font-size:16px;line-height:1.5;color:#e8e8ea;background:#23242b;border:1px solid #34363f;border-radius:14px;padding:14px 16px;"></div>
     <div style="font-size:17px;line-height:1.5;color:#c2c2c6;">Warm-up · Hauptteil · Cool-down.<br>Nach jeder Übung "Weiter" klicken. Pausen laufen automatisch mit Signalton am Ende.</div>
   </div>
   <button id="intro-start" class="btn btn-primary">Start</button>
@@ -153,15 +154,48 @@ const WORKOUTS_DATA = {
     ],
     cooldown: [],
   },
-  P2: { title: 'Phase 2 – Korrektur', subtitle: 'Reha · ~12 Min · 3x/Woche', mainLabel: 'Korrektur Dysbalance',
+  P2W1: { title: 'Phase 2 – Woche 1', subtitle: 'Reha · ~12-15 Min · 3x/Woche', mainLabel: 'Phase 2 · 2 Sätze',
+    note: 'Mo/Mi/Fr oder Di/Do/Sa. Ziehen oder "merkwürdig" ist okay. Stechen = sofort Stopp bei dieser Übung. Schulter am nächsten Morgen schlechter? Eine Einheit aussetzen, dann halbes Volumen. Knacken ohne Schmerz ist kein Abbruchgrund.',
+    warmup: [
+      {name:'Pendelübung', cue:'sanfte Mobilisation ohne Last', sets:2, sides:true, durationSec:30},
+      {name:'Armkreisen vorwärts + rückwärts', reps:'10 je Richtung'},
+    ],
+    main: [
+      {name:'Band Pull-Apart', cue:'Band rot (leichtestes) · Arme fast gestreckt auf Brusthöhe, langsam auf, 2 Sekunden zurück. Ellbogen nicht durchdrücken.', sets:2, reps:'15 Wdh', pauseSec:45},
+      {name:'Externe Rotation', cue:'Band rot · Ellbogen 90 Grad, dicht am Körper, Handtuchrolle zwischen Ellbogen und Rippen. Nur der Unterarm bewegt sich nach außen. Kleiner Bewegungsradius, keine Rumpfrotation.', sets:2, sides:true, reps:'12 Wdh', pauseSec:45},
+      {name:'Interne Rotation', cue:'Band rot · Gleiche Position, Zug nach innen.', sets:2, sides:true, reps:'12 Wdh', pauseSec:45},
+      {name:'Wall Slides (Wandengel)', cue:'Rücken, Hinterkopf, Unterarme an der Wand. Hoch nur so weit, wie die Unterarme Kontakt halten und der untere Rücken flach bleibt. Meistens ist das viel niedriger, als man denkt.', sets:2, reps:'10 Wdh', pauseSec:45},
+      {name:'Face Pull', cue:'Band rot, an der Klimmzugstange · Zug zur Stirn, Ellbogen hoch und außen, am Ende Schulterblätter zusammen.', sets:2, reps:'12 Wdh', pauseSec:45},
+    ],
+    cooldown: [
+      {name:'Brustdehnung im Türrahmen', sides:true, durationSec:30},
+      {name:'Nackendehnung', cue:'Ohr Richtung Schulter, sanft', sides:true, durationSec:30},
+    ],
+  },
+  P2W2: { title: 'Phase 2 – Woche 2+', subtitle: 'Reha · nur wenn Woche 1 problemlos', mainLabel: 'Phase 2 · 3 Sätze',
+    note: 'Ab Woche 3-4 bei Pull-Apart und Face Pull auf schwarz wechseln. Rotationen bleiben lange bei rot. Stechen = sofort Stopp bei dieser Übung. Schulter am nächsten Morgen schlechter? Eine Einheit aussetzen, dann halbes Volumen.',
+    warmup: [
+      {name:'Pendelübung', cue:'sanfte Mobilisation ohne Last', sets:2, sides:true, durationSec:30},
+      {name:'Armkreisen vorwärts + rückwärts', reps:'10 je Richtung'},
+    ],
+    main: [
+      {name:'Band Pull-Apart', cue:'Band rot (ab Woche 3-4 schwarz) · langsam auf, 2 Sek zurück · Ellbogen nicht durchdrücken', sets:3, reps:'15 Wdh', pauseSec:45},
+      {name:'Externe Rotation', cue:'Band rot · Ellbogen 90°, Handtuchrolle an den Rippen · nur Unterarm nach außen', sets:3, sides:true, reps:'12 Wdh', pauseSec:45},
+      {name:'Interne Rotation', cue:'Band rot · gleiche Position, Zug nach innen', sets:3, sides:true, reps:'12 Wdh', pauseSec:45},
+      {name:'Wall Slides (Wandengel)', cue:'nur so hoch wie Unterarme Kontakt halten, unterer Rücken flach', sets:3, reps:'10 Wdh', pauseSec:45},
+      {name:'Face Pull', cue:'Band rot (ab Woche 3-4 schwarz) · Zug zur Stirn, Ellbogen hoch und außen', sets:3, reps:'12 Wdh', pauseSec:45},
+    ],
+    cooldown: [
+      {name:'Brustdehnung im Türrahmen', sides:true, durationSec:30},
+      {name:'Nackendehnung', cue:'Ohr Richtung Schulter, sanft', sides:true, durationSec:30},
+    ],
+  },
+  DAILY: { title: 'Tägliche Dehnung', subtitle: 'Jeden Tag · ~3 Min', mainLabel: 'Dehnung',
+    note: 'Gegenpart zur Kräftigung: die vordere Seite ist verkürzt. Täglich, auch an Tagen ohne Phase-2-Programm.',
     warmup: [],
     main: [
-      {name:'Externe Rotation', cue:'leichtes Band · Außenrotatoren', sets:3, sides:true, reps:'15 Wdh', pauseSec:45},
-      {name:'Interne Rotation', cue:'leichtes Band · Balance', sets:3, sides:true, reps:'15 Wdh', pauseSec:45},
-      {name:'Band Pull-Apart', cue:'leicht · hintere Schulter', sets:3, reps:'15 Wdh', pauseSec:45},
-      {name:'Face Pull', cue:'Band auf Gesichtshöhe ziehen', sets:3, reps:'15 Wdh', pauseSec:45},
-      {name:'Wall Slides (Wandengel)', cue:'Schulterblattkontrolle, Mobilität', sets:3, reps:'10 Wdh', pauseSec:45},
-      {name:'Brustdehnung Türrahmen', sets:2, sides:true, durationSec:30, pauseSec:20},
+      {name:'Brustdehnung Türrahmen', sides:true, durationSec:30},
+      {name:'Nackendehnung', cue:'Ohr Richtung Schulter, sanft', sides:true, durationSec:30},
     ],
     cooldown: [],
   },
@@ -402,6 +436,9 @@ function render(){
   if(state.screen==='intro' && state.workoutKey){
     $('intro-subtitle').textContent = WORKOUTS_DATA[state.workoutKey].subtitle;
     $('intro-title').textContent = WORKOUTS_DATA[state.workoutKey].title;
+    const note = WORKOUTS_DATA[state.workoutKey].note || '';
+    $('intro-note').textContent = note;
+    $('intro-note').style.display = note ? '' : 'none';
   }
 
   if(state.screen==='session'){
