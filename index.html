@@ -84,19 +84,51 @@
 
 <script src="workouts.js"></script>
 <script>
+// Superset mit durationSec → zwei Schritte, damit die Zeitübung ihren eigenen Timer bekommt.
+// Aufgeteilt wird über das Superset-Format: name "Superset: X + Y", cue "1) X: ... · 2) direkt danach Y: ...
+// · Beides zusammen = 1 Satz, danach Pause.", reps "a + b". durationSec gilt für den Teil, dessen reps "Sek"
+// enthält; steht dort "je Seite", läuft der Timer für links und rechts getrennt.
+function supersetParts(ex) {
+  if (!ex.durationSec || !ex.name.startsWith('Superset: ')) return null;
+  const names = ex.name.slice('Superset: '.length).split(' + ');
+  const reps = (ex.reps || '').split(' + ');
+  const cue = (ex.cue || '').match(/^1\) (.*?) · 2\) direkt danach (.*?) · Beides zusammen = 1 Satz, danach Pause\.$/);
+  if (names.length !== 2 || reps.length !== 2 || !cue) {
+    console.warn('Superset mit durationSec nicht im Superset-Format, wird nicht aufgeteilt:', ex.name);
+    return null;
+  }
+  return names.map((name, i) => {
+    const timed = /Sek/.test(reps[i]);
+    const partCue = cue[i + 1].startsWith(name + ': ') ? cue[i + 1].slice(name.length + 2) : cue[i + 1];
+    return { name, cue: partCue, reps: reps[i], durationSec: timed ? ex.durationSec : 0, perSide: timed && /je Seite/.test(reps[i]) };
+  });
+}
+
 function buildSteps(wk) {
   const w = WORKOUTS_DATA[wk];
   const steps = [];
+  const sideLabel = side => `${side === 1 ? 'Linke' : 'Rechte'} Seite`;
   const pushBlock = (ex, phase, addPauseAfterSet) => {
     const sets = ex.sets || 1;
     const sides = ex.sides ? 2 : 1;
+    const parts = supersetParts(ex);
     for (let s = 1; s <= sets; s++) {
       for (let side = 1; side <= sides; side++) {
-        let sub = '';
-        if (sets > 1 && sides > 1) sub = `Satz ${s}/${sets} · ${side === 1 ? 'Linke' : 'Rechte'} Seite`;
-        else if (sets > 1) sub = `Satz ${s}/${sets}`;
-        else if (sides > 1) sub = `${side === 1 ? 'Linke' : 'Rechte'} Seite`;
-        steps.push({type:'exercise', phase, name: ex.name, cue: ex.cue || '', reps: ex.reps || '', sub, durationSec: ex.durationSec || 0});
+        const setLabel = sets > 1 ? [`Satz ${s}/${sets}`] : [];
+        if (parts) {
+          parts.forEach((p, i) => {
+            const partSides = !ex.sides && p.perSide ? 2 : 1;
+            for (let ps = 1; ps <= partSides; ps++) {
+              const sub = [...setLabel, `Superset ${i + 1}/2`];
+              if (sides > 1) sub.push(sideLabel(side));
+              else if (partSides > 1) sub.push(sideLabel(ps));
+              steps.push({type:'exercise', phase, name: p.name, cue: p.cue, reps: p.reps, sub: sub.join(' · '), durationSec: p.durationSec});
+            }
+          });
+        } else {
+          const sub = sides > 1 ? [...setLabel, sideLabel(side)] : setLabel;
+          steps.push({type:'exercise', phase, name: ex.name, cue: ex.cue || '', reps: ex.reps || '', sub: sub.join(' · '), durationSec: ex.durationSec || 0});
+        }
         const isLastOfBlock = s === sets && side === sides;
         if (addPauseAfterSet && ex.pauseSec && !isLastOfBlock && side === sides) steps.push({type:'pause', phase, durationSec: ex.pauseSec});
       }
