@@ -108,7 +108,7 @@ const WORKOUTS_DATA = {
     note: 'STAND: Stufe 2 (3x8 auf der bisherigen Höhe) ist am 18.10. problemlos gelaufen. Jetzt Stufe 3: Hände eine Stufe tiefer, dafür zurück auf 2 Sätze. Die Übung wird schwerer, also fällt das Volumen zurück — eine Sache auf einmal. Leiter danach: 3x8 tiefer → 2x8 noch eine Stufe tiefer → 3x8 → … bis zum Boden. Erst wenn du am Boden 3x10 sauber und schmerzfrei schaffst, kommen Dips und enge Klimmzüge. Eine Stufe pro Woche, nicht mehr. Nach dem Reha-Programm, nicht davor.',
     warmup: [],
     main: [
-      {name:'Liegestütze erhöht – eine Stufe tiefer', cue:'NEU diese Woche: Hände tiefer als zuletzt (z. B. Treppenstufe statt Couch-Kante) · dafür nur 2 Sätze · Oberkörper in einer Linie, Schulterblätter aktiv, nicht durchhängen · runter mit Kontrolle, ca. 2 Sek · Stechen vorn in der Schulter = Stopp, dann nächste Woche zurück auf die alte Höhe', sets:2, reps:'8 Wdh', pauseSec:60},
+      {name:'Liegestütze erhöht – eine Stufe tiefer - TReppenstufe', cue:'NEU diese Woche: Hände tiefer als zuletzt (z. B. Treppenstufe statt Couch-Kante) · dafür nur 2 Sätze · Oberkörper in einer Linie, Schulterblätter aktiv, nicht durchhängen · runter mit Kontrolle, ca. 2 Sek · Stechen vorn in der Schulter = Stopp, dann nächste Woche zurück auf die alte Höhe', sets:3, reps:'8 Wdh', pauseSec:60},
       {name:'Bizeps-Curls', cue:'3 kg · hier geht die Steigerung über Reps: diese Woche 15 statt 12 · langsam, keine Schwungbewegung, Ellbogen am Körper', sets:3, reps:'15 Wdh', pauseSec:45},
     ],
     cooldown: [],
