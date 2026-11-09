@@ -60,7 +60,7 @@ const WORKOUTS_DATA = {
     ],
   },
   B2: { title: 'Core', subtitle: 'Tag B2 · ca. 40 Min',
-    note: 'Cossack Squat + Adduktoren-Slides stehen bewusst vorn: die seitliche Bewegungsrichtung unter Last war seit dem Kürzen nicht mehr abgedeckt, und die Adduktoren sind beim Beachvolleyball die Zerrungsstelle. Kurzes Warm-up reicht, der Block ist nicht kreislaufintensiv. Lässt sich gut an eine Reha-Einheit hängen. Pallof Press ist die Übung, auf die du am ehesten verzichten kannst, wenn es eng wird.',
+    note: 'Cossack Squat + Adduktoren-Slides stehen bewusst vorn: die seitliche Bewegungsrichtung unter Last war seit dem Kürzen nicht mehr abgedeckt, und die Adduktoren sind beim Beachvolleyball die Zerrungsstelle. Kurzes Warm-up reicht, der Block ist nicht kreislaufintensiv. Lässt sich gut an eine Reha-Einheit hängen. Plank Shoulder Taps sind die Übung, auf die du am ehesten verzichten kannst, wenn es eng wird.',
     warmup: [
       {name:'Hüftkreisen', reps:'10 je Seite'},
       {name:'Bird Dog', cue:'Rückenstrecker + Anti-Rotation · 2 Sek oben halten', reps:'10 je Seite'},
@@ -68,7 +68,7 @@ const WORKOUTS_DATA = {
     ],
     main: [
       {name:'Superset: Cossack Squat + Adduktoren-Slides', cue:'1) Cossack Squat: Rucksack vor der Brust, 3-1-1 Tempo, Ferse bleibt am Boden, Seiten im Wechsel · 2) direkt danach Adduktoren-Slides: Copenhagen-Plank-Variante oder in Seitlage das UNTERE Bein anheben, erst links, dann rechts · Beides zusammen = 1 Satz, danach Pause.', sets:3, reps:'6-8 + 10 Wdh je Seite', pauseSec:60},
-      {name:'Pallof Press', cue:'Band seitlich auf Brusthöhe, seitlich zum Ankerpunkt stehen · Arme nach vorn strecken und halten, Rumpf darf sich nicht mitdrehen', sets:3, sides:true, reps:'10 Wdh', pauseSec:30},
+      {name:'Plank Shoulder Taps', cue:'ersetzt den Pallof Press · Liegestützposition, Füße etwas breiter als hüftbreit · eine Hand abheben und die gegenüberliegende Schulter antippen, langsam · Hüfte darf NICHT wegkippen · Steigerung: Füße enger stellen, nicht schneller werden', sets:3, sides:true, reps:'10 Wdh', pauseSec:30},
       {name:'Superset: Reverse Crunch + Side Plank', cue:'1) Reverse Crunch: langsames Tempo · 2) direkt danach Side Plank: 30 Sek je Seite, Hüfte oben halten, nicht absacken · Beides zusammen = 1 Satz, danach Pause.', sets:3, reps:'16 Wdh + 30 Sek je Seite', durationSec:30, pauseSec:30},
       {name:'Superset: Hollow Body Hold + Knee Wipers', cue:'1) Hollow Body Hold: 40 Sek, ab nächster Woche 50, dann Hollow Rocks, immer die SEKUNDEN eintragen, nicht die Sätze · 2) direkt danach Knee Wipers: langsames Tempo · Beides zusammen = 1 Satz, danach Pause.', sets:3, reps:'40 Sek + 10 Wdh je Seite', durationSec:40, pauseSec:30},
     ],
@@ -104,11 +104,11 @@ const WORKOUTS_DATA = {
     ],
     cooldown: [],
   },
-  E1: { title: 'Drucktest – Stufe 3', subtitle: 'Nach dem Reha-Programm · ca. 10 Min', mainLabel: 'Drucktest',
-    note: 'STAND: Stufe 2 (3x8 auf der bisherigen Höhe) ist am 18.10. problemlos gelaufen. Jetzt Stufe 3: Hände eine Stufe tiefer, dafür zurück auf 2 Sätze. Die Übung wird schwerer, also fällt das Volumen zurück — eine Sache auf einmal. Leiter danach: 3x8 tiefer → 2x8 noch eine Stufe tiefer → 3x8 → … bis zum Boden. Erst wenn du am Boden 3x10 sauber und schmerzfrei schaffst, kommen Dips und enge Klimmzüge. Eine Stufe pro Woche, nicht mehr. Nach dem Reha-Programm, nicht davor.',
+  E1: { title: 'Drucktest – Treppenstufe 3x10', subtitle: 'Nach dem Reha-Programm · ca. 10 Min', mainLabel: 'Drucktest',
+    note: 'STAND 09.11.: Treppenstufe mit flachen Händen läuft, 3x8 war problemlos. Jetzt 3x10 auf derselben Höhe. Leiter danach: eine Stufe tiefer 2x8 → 3x8 → 3x10 → … bis zum Boden. Erst wenn du am Boden 3x10 sauber und schmerzfrei schaffst, kommen Dips und enge Klimmzüge. Eine Stufe pro Woche, nicht mehr. Nach dem Reha-Programm, nicht davor.',
     warmup: [],
     main: [
-      {name:'Liegestütze erhöht – eine Stufe tiefer - TReppenstufe', cue:'NEU diese Woche: Hände tiefer als zuletzt (z. B. Treppenstufe statt Couch-Kante) · dafür nur 2 Sätze · Oberkörper in einer Linie, Schulterblätter aktiv, nicht durchhängen · runter mit Kontrolle, ca. 2 Sek · Stechen vorn in der Schulter = Stopp, dann nächste Woche zurück auf die alte Höhe', sets:3, reps:'8 Wdh', pauseSec:60},
+      {name:'Liegestütze erhöht – Treppenstufe, Hände flach', cue:'gleiche Höhe wie letzte Woche, jetzt 10 statt 8 Wdh · flache Hände, keine Liegestützgriffe · Oberkörper in einer Linie, Schulterblätter aktiv, nicht durchhängen · runter mit Kontrolle, ca. 2 Sek · Stechen vorn in der Schulter = Stopp, dann nächste Woche zurück auf 3x8', sets:3, reps:'10 Wdh', pauseSec:60},
       {name:'Bizeps-Curls', cue:'3 kg · hier geht die Steigerung über Reps: diese Woche 15 statt 12 · langsam, keine Schwungbewegung, Ellbogen am Körper', sets:3, reps:'15 Wdh', pauseSec:45},
     ],
     cooldown: [],
