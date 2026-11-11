@@ -69,8 +69,8 @@ const WORKOUTS_DATA = {
     main: [
       {name:'Superset: Cossack Squat + Adduktoren-Slides', cue:'1) Cossack Squat: Rucksack vor der Brust, 3-1-1 Tempo, Ferse bleibt am Boden, Seiten im Wechsel · 2) direkt danach Adduktoren-Slides: Copenhagen-Plank-Variante oder in Seitlage das UNTERE Bein anheben, erst links, dann rechts · Beides zusammen = 1 Satz, danach Pause.', sets:3, reps:'6-8 + 10 Wdh je Seite', pauseSec:60},
       {name:'Plank Shoulder Taps', cue:'ersetzt den Pallof Press · Liegestützposition, Füße etwas breiter als hüftbreit · eine Hand abheben und die gegenüberliegende Schulter antippen, langsam · Hüfte darf NICHT wegkippen · Steigerung: Füße enger stellen, nicht schneller werden', sets:3, sides:true, reps:'10 Wdh', pauseSec:30},
-      {name:'Superset: Reverse Crunch + Side Plank', cue:'1) Reverse Crunch: langsames Tempo · 2) direkt danach Side Plank: 30 Sek je Seite, Hüfte oben halten, nicht absacken · Beides zusammen = 1 Satz, danach Pause.', sets:3, reps:'16 Wdh + 30 Sek je Seite', durationSec:30, pauseSec:30},
-      {name:'Superset: Hollow Body Hold + Knee Wipers', cue:'1) Hollow Body Hold: 40 Sek, ab nächster Woche 50, dann Hollow Rocks, immer die SEKUNDEN eintragen, nicht die Sätze · 2) direkt danach Knee Wipers: langsames Tempo · Beides zusammen = 1 Satz, danach Pause.', sets:3, reps:'40 Sek + 10 Wdh je Seite', durationSec:40, pauseSec:30},
+      {name:'Superset: Reverse Crunch + Side Plank', cue:'1) Reverse Crunch: langsames Tempo · 2) direkt danach Side Plank: 40 Sek je Seite, Hüfte oben halten, nicht absacken · Beides zusammen = 1 Satz, danach Pause.', sets:3, reps:'16 Wdh + 40 Sek je Seite', durationSec:40, pauseSec:30},
+      {name:'Superset: Hollow Body Hold + Knee Wipers', cue:'1) Hollow Body Hold: 50 Sek, ab nächster Woche 50, dann Hollow Rocks, immer die SEKUNDEN eintragen, nicht die Sätze · 2) direkt danach Knee Wipers: langsames Tempo · Beides zusammen = 1 Satz, danach Pause.', sets:3, reps:'50 Sek + 10 Wdh je Seite', durationSec:50, pauseSec:30},
     ],
     cooldown: [
       {name:'Seated Forward Fold', durationSec:45},
